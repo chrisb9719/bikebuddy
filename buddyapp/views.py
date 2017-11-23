@@ -7,7 +7,7 @@ import gpxpy.gpx
 
 def index(request):
     context = RequestContext(request)
-    return render_to_response('buddyapp/base.html', context)
+    return render_to_response('buddyapp/home.html', context)
 
 def top_rated(request):
     route_list = Route.objects.order_by("-rating")[:40]
@@ -35,7 +35,7 @@ def home(request):
 
 	response = render(request, 'bikebuddy/home.html', context = context_dict)
 	return response
-	
+
 def show_route(request):
 
 # Parsing an existing file:
@@ -52,7 +52,7 @@ def show_route(request):
 
 	for waypoint in gpx.waypoints:
 		print 'waypoint {0} -> ({1},{2})'.format(waypoint.name, waypoint.latitude, waypoint.longitude)
-		
+
 	for route in gpx.routes:
 		print 'Route:'
 		for point in route.points:

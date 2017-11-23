@@ -1,0 +1,42 @@
+{% extends 'bikebuddy/base.html' %}
+<!--> Displays the 10 top rated playlists in the database, according to ratings left by logged-in users. </!-->
+{% load staticfiles %}
+
+{% block title %}
+	Top Rated
+{% endblock %}
+
+{% block body %}
+<div class="inner cover">
+    <h1>The Top 10</h1>
+	<h5>This is where all the best playists on the site come together to battle it out for a place in the Top 10 Rankings!</h5>
+</div>
+
+<div class="col-lg-12">
+	{% if routes %}
+	<ul class="list-group">
+		{% for route in routes %}
+		<li class="list-group-item list-group-item-warning">
+		
+			{% if route.picture %}
+				<img src="{{ route.picture.url }} "height='75' width='auto'>
+			{% else %}
+				<img src="{{ MEDIA_URL }}vinyl-883199_960_720.png "height='75' width='auto'>
+			{% endif %}	
+			
+			<a href="{% url 'show_route' route.slug %}" class="trigger">{{ route.name }}</a>
+				<div class="pop-up" style="display: none">
+					{% if route.author %}
+						<p>Author: {{ route.author }}</p>
+					{% else %}
+						<p>Author: N/A</p>
+					{% endif %}
+				</div>
+		</li>
+		{% endfor %}
+	</ul>
+	{% else %}
+		<p class="lead">There are no routes present.</p>
+	{% endif %}
+</div>
+{% endblock %}
