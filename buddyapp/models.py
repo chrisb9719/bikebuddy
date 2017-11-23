@@ -64,7 +64,7 @@ class Route(models.Model):
         return self.name
 
 class Comment(models.Model):
-    route = models.ForeignKey('ToP.Playlist', related_name='comments',null=True)
+    route = models.ForeignKey('buddyapp.Route', related_name='comments',null=True)
     author = models.CharField(max_length=128, unique=False)
     text = models.TextField()
     created_date = models.DateTimeField(default=timezone.now)
@@ -76,3 +76,20 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.text
+
+
+
+class Rating(models.Model):
+    route = models.ForeignKey('buddyapp.Route', related_name='ratings',null=True)
+    author = models.CharField(max_length=128, unique=False)
+    rating = models.IntegerField(choices=RATING_CHOICES, default=1)
+    created_date = models.DateTimeField(default=timezone.now)
+    approved_rating = models.BooleanField(default=False)
+
+    def approve(self):
+        self.approved_rating = True
+        self.save()
+
+    def __str__(self):
+        return str(self.rating)
+
