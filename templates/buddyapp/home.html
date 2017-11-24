@@ -13,6 +13,7 @@ an account. If user is logged in, home page informs them of this. -->
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="{% static 'images/favicon.ico' %}">
+    <link href='https://fonts.googleapis.com/css?family=Nova Flat' rel='stylesheet'>
     <title>Home</title>
     <!-- Bootstrap core CSS -->
     <link href="http://v4-alpha.getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -21,21 +22,21 @@ an account. If user is logged in, home page informs them of this. -->
   </head>
 
 
-
+  <body>
     <div class="inner cover">
         <h1 class="cover-heading">BikeBuddy</h1>
 		<p class="lead">BikeBuddy is a resource for all cycling enthusiasts to share their favourite routes.</p>
 		<a href="top_rated/">About</a><br />
 		</div><br />
-					<h2>Most Viewed Route</h2>
-					<img src="{% static "map_1.png" %}" height='1000' width='1900'>
-					<a href="/bikebuddy/route/{{ most_viewed.slug }}" class="trigger">{{ most_viewed.name }}</a>
+			<h2>Most Viewed Route</h2>
+			<img src="{% static "map_1.png" %}" height='1000' width='1900'>
+			<a href="/bikebuddy/route/{{ most_viewed.slug }}" class="trigger">{{ most_viewed.name }}</a>
 
 
-					<h2>Number 1 Route</h2>
-					<img src="{% static "map_2.png" %}" height='1000' width='1900'>
-					<a href="/bikebuddy/routes/{{ routes_ratings.slug }}" class="trigger">{{ routes_ratings.name }}</a>
-
+			<h2>Number 1 Route</h2>
+			<img src="{% static "map_2.png" %}" height='1000' width='1900'>
+			<a href="/bikebuddy/routes/{{ routes_ratings.slug }}" class="trigger">{{ routes_ratings.name }}</a>
+  </body>
 
 
 
