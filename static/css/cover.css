@@ -28,7 +28,7 @@ a:hover {
 html,
 body {
   height: 100%;
-  background: url(images/bg.jpg) no-repeat center center fixed;
+  background: url(images/background.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
@@ -70,12 +70,12 @@ body {
 
 .masthead {
   margin-bottom: 2rem;
- 
+
 }
 
 .masthead-brand {
   margin-bottom: 0;
-  
+
 }
 
 .nav-masthead .nav-link {
@@ -149,7 +149,7 @@ p {
   .masthead {
     position: absolute;
     top: 0;
-	
+
   }
   .mastfoot {
     position: fixed;
@@ -221,5 +221,5 @@ img {
 #individual_p_list {
     margin-left: 50px;
     margin-right: 50px;
-    
+
 }

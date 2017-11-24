@@ -1,42 +1,40 @@
-{% load staticfiles %}
+<!DOCTYPE html>
 
+{% load staticfiles %}
 <!--Home page template. If user is unregistered, 'Register Here!' displayed to prompt user to create
 an account. If user is logged in, home page informs them of this. -->
 
-
-	<title>Home</title>
+<script src="{% static "js/ToP-jquery.js" %}"></script>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="{% static 'images/favicon.ico' %}">
+    <title>Home</title>
+    <!-- Bootstrap core CSS -->
+    <link href="http://v4-alpha.getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href={% static "css/cover.css" %} rel="stylesheet">
+  </head>
 
 
 
     <div class="inner cover">
         <h1 class="cover-heading">BikeBuddy</h1>
 		<p class="lead">BikeBuddy is a resource for all cycling enthusiasts to share their favourite routes.</p>
-		{% if user.is_authenticated %}
-		{% else %}
-		{% endif %}
+		<a href="top_rated/">About</a><br />
 		</div><br />
 					<h2>Most Viewed Route</h2>
-					<ul class="list-group" id="home_viewed">
-					<li class="list-group-item list-group-item-warning">
-					{% if most_viewed.picture %}
-						<img src="{{ most_viewed.picture.url }} "height='75' width='auto'>
-					{% else %}
-						<img src="{{ STATIC_URL }}map_1.png "height='75' width='auto'>
-					{% endif %}
+					<img src="{% static "map_1.png" %}" height='1000' width='1900'>
 					<a href="/bikebuddy/route/{{ most_viewed.slug }}" class="trigger">{{ most_viewed.name }}</a>
-					</ul>
 
 
 					<h2>Number 1 Route</h2>
-					<ul class="list-group" id="home_rated">
-					<li class="list-group-item list-group-item-warning">
-					{% if routes_ratings.picture %}
-						<img src="{{ routes_ratings.picture.url }} "height='75' width='auto'>
-					{% else %}
-						<img src="{{ STATIC_URL }}map_2.png "height='75' width='auto'>
-					{% endif %}
-					 <a href="/bikebuddy/routes/{{ routes_ratings.slug }}" class="trigger">{{ routes_ratings.name }}</a>
-					</ul>
+					<img src="{% static "map_2.png" %}" height='1000' width='1900'>
+					<a href="/bikebuddy/routes/{{ routes_ratings.slug }}" class="trigger">{{ routes_ratings.name }}</a>
 
 
 
@@ -53,3 +51,4 @@ an account. If user is logged in, home page informs them of this. -->
     </div>
 	{% endif %}
 	</p>
+	</html>
