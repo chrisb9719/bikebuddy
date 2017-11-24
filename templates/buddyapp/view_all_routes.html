@@ -1,0 +1,43 @@
+{% extends 'bikebuddy/base.html' %}
+<!--> Displays a list of all created routes in the database, along with either the
+default cover art or the user-uploaded cover image. The playlist author is also displayed. </!-->
+{% load staticfiles %}
+
+{% block title %}
+	View All Routes 
+{% endblock %}
+
+{% block body %}
+<div class="inner cover">
+	<h1>All Routes</h1>
+	<h5>View all the routes ever created by our awesome users!</h5>
+</div>
+
+<div class="col-lg-12">
+	{% if routes %}
+	<ul class="list-group">
+		{% for route in routes %}
+			<li class="list-group-item list-group-item-warning">
+				
+			{% if route.picture %}
+				<img src="{{ route.picture.url }} "height='75' width='auto'>
+			{% else %}
+				<img src="{{ MEDIA_URL }}vinyl-883199_960_720.png "height='75' width='auto'>
+			{% endif %}	
+			
+			<a href="{% url 'show_route' route.slug %}" class="trigger">{{ route.name }}</a>
+				<div class="pop-up" style="display: none">
+					{% if route.author %}
+						<p>Author: {{ route.author }}</p>
+					{% else %}
+						<p>Author: N/A</p>
+					{% endif %}
+				</div>
+			</li>
+		{% endfor %}
+	</ul>
+	{% else %}
+		<p class="lead">There are no routes present.</p>
+	{% endif %}
+</div>
+{% endblock %}
