@@ -23,20 +23,16 @@ an account. If user is logged in, home page informs them of this. -->
 
 
   <body>
-    <div class="inner cover">
-        <h1 class="cover-heading">BikeBuddy</h1>
-		<p class="lead">BikeBuddy is a resource for all cycling enthusiasts to share their favourite routes.</p>
-		<a href="top_rated/">About</a><br />
-		</div><br />
-			<h2>Most Viewed Route</h2>
-			<img src="{% static "map_1.png" %}" height='1000' width='1900'>
-			<a href="/bikebuddy/route/{{ most_viewed.slug }}" class="trigger">{{ most_viewed.name }}</a>
-
-
-			<h2>Number 1 Route</h2>
-			<img src="{% static "map_2.png" %}" height='1000' width='1900'>
-			<a href="/bikebuddy/routes/{{ routes_ratings.slug }}" class="trigger">{{ routes_ratings.name }}</a>
-  </body>
+    <h1>Bike Buddy</h1>
+    <div class="topnav" id="myTopnav">
+     <a href="#home" class="active">Home</a>
+     <a href="#myroutes">My Routes</a>
+     <a href="#addroute">Add Route</a>
+   </div>
+    <p class="center-text">
+       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Turpis egestas sed tempus urna et pharetra. Nunc congue nisi vitae suscipit tellus mauris a diam maecenas. Sit amet tellus cras adipiscing enim eu turpis. Vulputate enim nulla aliquet porttitor lacus luctus accumsan tortor. Sagittis aliquam malesuada bibendum arcu. Enim lobortis scelerisque fermentum dui. Varius sit amet mattis vulputate enim nulla aliquet porttitor acus. Convallis posuere morbi leo urna molestie at elementum eu facilisis. Tellus rutrum tellus pellentesque eu tincidunt tortor aliquam nulla. At varius vel pharetra vel turpis nunc eget lorem dolor. Blandit libero volutpat sed cras ornare. Tempor orci dapibus ultrices in. Eget arcu dictum varius duis. Diam volutpat commodo sed egestas egestas fringilla.
+    </p>
+ </body>
 
 
 
