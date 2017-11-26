@@ -1,28 +1,10 @@
-<!DOCTYPE html>
+{% extends "buddyapp/base.html" %}
 
-{% load staticfiles %}
-<!--Home page template. If user is unregistered, 'Register Here!' displayed to prompt user to create
-an account. If user is logged in, home page informs them of this. -->
+{% block title %}
+Home
+{% endblock %}
 
-<script src="{% static "js/ToP-jquery.js" %}"></script>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="{% static 'images/favicon.ico' %}">
-    <link href='https://fonts.googleapis.com/css?family=Nova Flat' rel='stylesheet'>
-    <title>Home</title>
-    <!-- Bootstrap core CSS -->
-    <link href="http://v4-alpha.getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom styles for this template -->
-    <link href={% static "css/cover.css" %} rel="stylesheet">
-  </head>
-
-
-  <body>
+{% block body %}
     <h1>Bike Buddy</h1>
     <div class="topnav" id="myTopnav">
      <a href="#home" class="active">Home</a>
@@ -32,20 +14,4 @@ an account. If user is logged in, home page informs them of this. -->
     <p class="center-text">
        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Turpis egestas sed tempus urna et pharetra. Nunc congue nisi vitae suscipit tellus mauris a diam maecenas. Sit amet tellus cras adipiscing enim eu turpis. Vulputate enim nulla aliquet porttitor lacus luctus accumsan tortor. Sagittis aliquam malesuada bibendum arcu. Enim lobortis scelerisque fermentum dui. Varius sit amet mattis vulputate enim nulla aliquet porttitor acus. Convallis posuere morbi leo urna molestie at elementum eu facilisis. Tellus rutrum tellus pellentesque eu tincidunt tortor aliquam nulla. At varius vel pharetra vel turpis nunc eget lorem dolor. Blandit libero volutpat sed cras ornare. Tempor orci dapibus ultrices in. Eget arcu dictum varius duis. Diam volutpat commodo sed egestas egestas fringilla.
     </p>
- </body>
-
-
-
-	<p>
-	{% if user.is_authenticated %}
-	<p class="lead">Welcome, {{ user.username }}. You are now logged in!</p>
-	<a href="accounts/password_change/" class="nav-link">Change Password</a>
-	<a href="{% url 'auth_logout' %}?next=/bikebuddy" class="btn btn-secondary">Logout</a>
-	{% else %}
-	<div class="mastfoot">
-		<div class="inner">
-		</div>
-    </div>
-	{% endif %}
-	</p>
-	</html>
+{% endblock %}
