@@ -9,19 +9,15 @@ def index(request):
     context = RequestContext(request)
     return render_to_response('buddyapp/home.html', context)
 
-def top_rated(request):
-    route_list = Route.objects.order_by("-rating")[:40]
-    context_dict = {'routes': route_list}
-    response = render(request, 'bikebuddy/top_rated.html', context=context_dict)
-    return response
+def my_routes(request):
+    context = RequestContext(request)
+    return render_to_response('buddyapp/my_routes.html')
 
-def most_viewed(request):
-    route_list = Route.objects.order_by("views")[:40]
-    context_dict = {'route': route_list}
-    response = render(request, 'bikeBuddy/most_viewed.html', context=context_dict)
-    return response
+def add_route(request):
+    context = RequestContext(request)
+    return render_to_response('buddyapp/add_route.html')
 
-def home(request):
+"""def home(request):
         context_dict = {}
         route_list = Route.objects.order_by("-views")[:1]
         for route in route_list:
@@ -85,3 +81,4 @@ def show_route(request):
 	# You can add routes and waypoints, too...
 
 	print 'Created GPX:', gpx.to_xml()
+    """

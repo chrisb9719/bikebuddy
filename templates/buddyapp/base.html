@@ -23,6 +23,12 @@ an account. If user is logged in, home page informs them of this. -->
   </head>
 
   <body>
+    <h1>Bike Buddy</h1>
+    <div class="topnav" id="myTopnav">
+     <a href="{% url 'index' %}">Home</a>
+     <a href="{% url 'my_routes' %}">My Routes</a>
+     <a href="{% url 'add_route' %}">Add Route</a>
+   </div>
     {% block body %}
     {% endblock %}
 </html>
