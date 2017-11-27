@@ -67,6 +67,18 @@ body {
 	text-align: left;
 	font-size: 20px
 }
+
+.form-text {
+	margin-right: 250px;
+	margin-left: 700px;
+	text-align: left;
+	font-size: 20px
+}
+
+.form-submit{
+	text-align: center;
+	font-size: 20px;
+}
 /*
  * Header
  */
@@ -145,7 +157,7 @@ p {
 
 .active {
     background-color: #4CAF50;
-    color: grey;
+    color: red;
 }
 
 .topnav .icon {

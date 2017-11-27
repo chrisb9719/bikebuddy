@@ -1,4 +1,3 @@
-from django.db import models
 from __future__ import unicode_literals
 from django.db import models
 from django import forms
@@ -12,16 +11,16 @@ from django.utils import timezone
 class UserProfile(models.Model):
     # Links UserProfile to a User model instance
     user = models.OneToOneField(User)
-    
+
     # Additionally adds the picture attribute
     picture = models.ImageField(upload_to='profile_images', blank=True)
-    
+
     def __str__(self):
         return self.user.username
 
     def __unicode__(self):
         return self.user.username
-    
+
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
         UserProfile.objects.create(user=instance)
@@ -30,20 +29,20 @@ def create_user_profile(sender, instance, created, **kwargs):
 
 # Configure a model for a playlist object
 class Route(models.Model):
-    
+
     name = models.CharField(max_length=128, unique=True)
     traffic = models.IntegerField(default=0)
     difficulty = models.IntegerField(default=0)
     views = models.IntegerField(default=0)
     rating = models.IntegerField(default=0)
     hillines = models.IntegerField(default=0)
-    
-    
+
+
     picture = models.ImageField(upload_to='route_images',blank=True)
     author = models.CharField(max_length=128, unique=False, blank=False)
 	# Slug automatically generated
     slug = models.SlugField(unique=True)
-    
+
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
 		### Code below is to help with testing
@@ -59,7 +58,7 @@ class Route(models.Model):
             self.hilliness = 0
 		###
         super(Route, self).save(*args, **kwargs)
-    
+
     def __str__(self):
         return self.name
 
@@ -79,7 +78,7 @@ class Comment(models.Model):
 
 
 
-class Rating(models.Model):
+"""class Rating(models.Model):
     route = models.ForeignKey('buddyapp.Route', related_name='ratings',null=True)
     author = models.CharField(max_length=128, unique=False)
     rating = models.IntegerField(choices=RATING_CHOICES, default=1)
@@ -91,5 +90,4 @@ class Rating(models.Model):
         self.save()
 
     def __str__(self):
-        return str(self.rating)
-
+        return str(self.rating)"""

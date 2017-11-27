@@ -1,7 +1,8 @@
 # Create your views here.
 from django.http import HttpResponse
 from django.template import RequestContext
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response, render
+from buddyapp.forms import UploadRouteForm
 import gpxpy
 import gpxpy.gpx
 
@@ -14,8 +15,13 @@ def my_routes(request):
     return render_to_response('buddyapp/my_routes.html')
 
 def add_route(request):
-    context = RequestContext(request)
-    return render_to_response('buddyapp/add_route.html')
+    if request.method == 'POST':
+        form = UploadRouteForm(request.POST, reuqest.FILES)
+        if form.is_valid():
+            return HttpResponseRedirect('buddyapp/home.html')
+    else:
+        form = UploadRouteForm()
+    return render(request, 'buddyapp/add_route.html', {'form': form})
 
 """def home(request):
         context_dict = {}
