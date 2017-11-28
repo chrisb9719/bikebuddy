@@ -19,7 +19,7 @@ def add_route(request):
         form = UploadRouteForm(request.POST, request.FILES)
         if form.is_valid():
             gpx_file = open(form.name, 'r')
-
+            gpx = gpxpy.parse(gpx_file)
             for route in gpx.routes:
                 print 'Route:'
     	        for point in route.points:
@@ -51,22 +51,3 @@ def register(request):
     return render_to_response('buddyapp/register.html',
                              {'user_form': user_form, 'profile_form': profile_form, 'registered': registered},
                               context)
-"""
-def home(request):
-
-        context_dict = {}
-        route_list = Route.objects.order_by("-views")[:1]
-        for route in route_list:
-                top_viewed=Route.objects.get(name=playlist.name)
-	context_dict ['most_viewed']= top_viewed
-
-	route_list = Route.objects.order_by("-rating")[:1]
-        for route in route_list:
-                top_rated=Route.objects.get(name=route.name)
-	context_dict ['routes_ratings'] =  top_rated
-
-	response = render(request, 'bikebuddy/home.html', context = context_dict)
-	return response
-
-def show_route(request):
-"""
