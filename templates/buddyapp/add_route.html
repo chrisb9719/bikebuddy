@@ -9,8 +9,7 @@
 {% block body %}
 <div class="form-text">
 	<p>
-		<form method="POST" class="post-form">
-			{% csrf_token %}
+		<form method="POST" class="post-form"> {% csrf_token %}
 		{% for field in form.visible_fields %}
 			{{ field.errors }}
 			{{ field.help_text}}
@@ -21,6 +20,6 @@
 	</p>
 </div>
 <p class = "form-submit">
-		<button type="submit" class="save btn btn-default">Add Route</button>
+		<button type="submit" name="submit" class="save btn btn-default">Add Route </button>
 </p>
 {% endblock %}
