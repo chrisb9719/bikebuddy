@@ -19,7 +19,7 @@ def add_route(request):
         form = UploadRouteForm(request.POST, request.FILES)
         if form.is_valid():
             gpx_file = open(form.name, 'r')
-        	gpx = gpxpy.parse(gpx_file)
+        	#gpx = gpxpy.parse(gpx_file)
             for route in gpx.routes:
         		print 'Route:'
         		for point in route.points:
