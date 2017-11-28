@@ -2,7 +2,7 @@
 from django.http import HttpResponse
 from django.template import RequestContext
 from django.shortcuts import render_to_response, render
-from buddyapp.forms import UploadRouteForm
+from buddyapp.forms import UploadRouteForm, UserForm, UserProfileForm
 import gpxpy
 import gpxpy.gpx
 
@@ -29,8 +29,29 @@ def add_route(request):
         form = UploadRouteForm()
     return render(request, 'buddyapp/add_route.html', {'form': form})
 
+<<<<<<< HEAD
+def register(request):
+    context = RequestContext(request)
+    registered = False
+    if request.method == 'POST':
+        user_form = UserForm(data=request.POST)
+        profile_form = UserProfileForm(date = request.POST)
+
+        if user_form.is_valid() and profile_form.is_valid():
+            user = user_form.save()
+            user.set_password(user.password)
+            user.save()
+
+            profile = profile_form.save()
+            profile.user = user
+            profile.save()
+
+
+"""def home(request):
+=======
 """
 def home(request):
+>>>>>>> e79835c7522560b005323fe5572dfe946145058c
         context_dict = {}
         route_list = Route.objects.order_by("-views")[:1]
         for route in route_list:
