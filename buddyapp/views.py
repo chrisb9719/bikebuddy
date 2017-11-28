@@ -19,16 +19,21 @@ def add_route(request):
         form = UploadRouteForm(request.POST, request.FILES)
         if form.is_valid():
             gpx_file = open(form.name, 'r')
+<<<<<<< HEAD
+            gpx = gpxpy.parse(gpx_file)
+=======
         	#gpx = gpxpy.parse(gpx_file)
+>>>>>>> 3158dea530c81c968a3c2853db8dfe01109aec35
             for route in gpx.routes:
-        		print 'Route:'
-        		for point in route.points:
-        			print 'Point at ({0},{1}) -> {2}'.format(point.latitude, point.longitude, point.elevation)
+                print 'Route:'
+    	        for point in route.points:
+                    print 'Point at ({0},{1}) -> {2}'.format(point.latitude, point.longitude, point.elevation)
             return HttpResponseRedirect('buddyapp/home.html')
     else:
         form = UploadRouteForm()
     return render(request, 'buddyapp/add_route.html', {'form': form})
 
+<<<<<<< HEAD
 def register(request):
     context = RequestContext(request)
     registered = False
@@ -47,6 +52,10 @@ def register(request):
 
 
 """def home(request):
+=======
+"""
+def home(request):
+>>>>>>> e79835c7522560b005323fe5572dfe946145058c
         context_dict = {}
         route_list = Route.objects.order_by("-views")[:1]
         for route in route_list:
