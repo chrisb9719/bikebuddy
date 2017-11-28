@@ -29,7 +29,6 @@ def add_route(request):
         form = UploadRouteForm()
     return render(request, 'buddyapp/add_route.html', {'form': form})
 
-<<<<<<< HEAD
 def register(request):
     context = RequestContext(request)
     registered = False
@@ -51,7 +50,6 @@ def register(request):
 =======
 """
 def home(request):
->>>>>>> e79835c7522560b005323fe5572dfe946145058c
         context_dict = {}
         route_list = Route.objects.order_by("-views")[:1]
         for route in route_list:
