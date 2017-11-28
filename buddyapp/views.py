@@ -19,11 +19,7 @@ def add_route(request):
         form = UploadRouteForm(request.POST, request.FILES)
         if form.is_valid():
             gpx_file = open(form.name, 'r')
-<<<<<<< HEAD
-            gpx = gpxpy.parse(gpx_file)
-=======
-        	#gpx = gpxpy.parse(gpx_file)
->>>>>>> 3158dea530c81c968a3c2853db8dfe01109aec35
+
             for route in gpx.routes:
                 print 'Route:'
     	        for point in route.points:
@@ -33,29 +29,31 @@ def add_route(request):
         form = UploadRouteForm()
     return render(request, 'buddyapp/add_route.html', {'form': form})
 
-<<<<<<< HEAD
 def register(request):
     context = RequestContext(request)
     registered = False
     if request.method == 'POST':
         user_form = UserForm(data=request.POST)
-        profile_form = UserProfileForm(date = request.POST)
-
+        profile_form = UserProfileForm(data=request.POST)
         if user_form.is_valid() and profile_form.is_valid():
             user = user_form.save()
             user.set_password(user.password)
             user.save()
-
             profile = profile_form.save()
             profile.user = user
             profile.save()
-
-
-"""def home(request):
-=======
+            registered=True
+        else:
+            print user_form.errors, profile_form.errors
+    else:
+        user_form = UserForm()
+        profile_form = ProfileForm()
+    return render_to_response('buddyapp/register.html',
+                             {'user_form': user_form, 'profile_form': profile_form, 'registered': registered},
+                              context)
 """
 def home(request):
->>>>>>> e79835c7522560b005323fe5572dfe946145058c
+
         context_dict = {}
         route_list = Route.objects.order_by("-views")[:1]
         for route in route_list:
