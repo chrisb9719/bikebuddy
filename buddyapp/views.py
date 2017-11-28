@@ -46,8 +46,7 @@ def register(request):
             profile.save()
 
 
-"""def home(request):
-=======
+
 """
 def home(request):
         context_dict = {}
