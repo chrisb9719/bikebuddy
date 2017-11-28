@@ -48,6 +48,6 @@ def register(request):
     else:
         user_form = UserForm()
         profile_form = ProfileForm()
-    return render_to_response('buddyapp/register.html',
+    return render_to_response('registration/registration_form.html',
                              {'user_form': user_form, 'profile_form': profile_form, 'registered': registered},
                               context)
