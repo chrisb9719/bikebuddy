@@ -3,8 +3,8 @@ from buddyapp.models import Route, UserProfile
 from django.contrib.auth.models import User
 
 class UploadRouteForm(forms.Form):
-    name = forms.CharField(max_length = 50, help_text="Name: ", required = True)
-    description = forms.CharField(max_length =140, help_text = "Description: ", required = False)
+    name = forms.CharField(max_length = 50, required = True)
+    description = forms.CharField(max_length =140, required = False)
     route = forms.FileField()
 
 class  UserForm(forms.ModelForm):
@@ -13,6 +13,6 @@ class  UserForm(forms.ModelForm):
         model = User
         fields = ('username', 'email', 'password')
 
-class  UserProfileForm(forms.ModelForm):
+class  ProfileForm(forms.ModelForm):
         class Meta:
             model = UserProfile

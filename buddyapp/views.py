@@ -2,7 +2,7 @@
 from django.http import HttpResponse
 from django.template import RequestContext
 from django.shortcuts import render_to_response, render
-from buddyapp.forms import UploadRouteForm, UserForm, UserProfileForm
+from buddyapp.forms import UploadRouteForm, UserForm, ProfileForm
 import gpxpy
 import gpxpy.gpx
 

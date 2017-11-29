@@ -8,18 +8,12 @@
 
 {% block body %}
 <div class="form-text">
-	<p>
-		<form method="POST" class="post-form"> {% csrf_token %}
-		{% for field in form.visible_fields %}
-			{{ field.errors }}
-			{{ field.help_text}}
-			{{ field }}
-			<br />
-		{% endfor %}
+		<form action="" method="POST" class="post-form">
+				{% csrf_token %}
+				{{ form.as_p }}
+				<p class = "form-submit">
+					<button type="submit" name="submit" class="save btn btn-default">Add Route</button>
+				</p>
 		</form>
-	</p>
 </div>
-<p class = "form-submit">
-		<button type="submit" name="submit" class="save btn btn-default">Add Route </button>
-</p>
 {% endblock %}
