@@ -20,7 +20,7 @@ urlpatterns = patterns('',
     url(r'^home/$', views.index, name='index'),
     url(r'^my_routes/$', views.my_routes, name='my_routes'),
     url(r'^add_route/$', views.add_route, name='add_route'),
-
+   # url(r'^admin/', admin.site.urls, name = 'admin'),
     #url(r'^route/(?P<route_name_slug>[\w\-]+)/$', views.show_route, name='show_route'),
     #url(r'^my_routes/$', views.my_routes, name='my_routes'),
     #url(r'^home/accounts/password_change/$', auth_views.password_change, name='password_change'),
