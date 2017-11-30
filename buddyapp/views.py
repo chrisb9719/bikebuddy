@@ -49,7 +49,7 @@ def add_comment(request, route_name_slug):
             return show_playlist(request, route_name_slug)
     else:
         form = CommentForm()
-    return render(request, 'ToP/add_comment.html', {'form': form})
+    return render(request, 'buddyapp/add_comment.html', {'form': form})
 
 
 @login_required
@@ -108,14 +108,9 @@ def user_login(request):
             print "Invalid login details: {0}. {1}".format(username, password)
             return HttpResponse("Invalid login details supplied")
     else:
-        return render_to_response('buddyapp/home.html', {}, context)
-
-
-@login_required
-def restricted(request):
-    return HttpResponse("Since you're logged in, you can see this text!")
+        return render_to_response('registration/login.html', {}, context)
 
 @login_required
 def user_logout(request):
     logout(request)
-    return HttpResponseRedirect('/registration/login/')
+    return HttpResponseRedirect('/buddyapp/login/')

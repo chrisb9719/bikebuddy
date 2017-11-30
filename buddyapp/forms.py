@@ -8,7 +8,7 @@ class UploadRouteForm(forms.Form):
     route = forms.FileField()
 
 class  UserForm(forms.ModelForm):
-    password = forms.CharField(widget = forms.PasswordInput())
+    password = forms.CharField(widget=forms.PasswordInput())
     class Meta:
         model = User
         fields = ('username', 'email', 'password')
@@ -16,6 +16,7 @@ class  UserForm(forms.ModelForm):
 class  UserProfileForm(forms.ModelForm):
         class Meta:
             model = UserProfile
+            fields = ('website', 'picture')
 """
 class PageForm(forms.ModelForm):
     title = forms.CharField(max_length=128, help_text="Please enter the title of the page.")

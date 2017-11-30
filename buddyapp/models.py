@@ -12,6 +12,9 @@ class UserProfile(models.Model):
     # Links UserProfile to a User model instance
     user = models.OneToOneField(User)
 
+    website = models.URLField(blank=True)
+    picture = models.ImageField(upload_to='profile_images', blank=True)
+
     def __str__(self):
         return self.user.username
 
@@ -47,7 +50,7 @@ class Rating(models.Model):
 	def approve(self):
 		self.approved_rating = True
 		self.save()
-	
+
 	def __str__(self):
 		return str(self.rating)
 """
