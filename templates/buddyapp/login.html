@@ -1,21 +1,43 @@
-{% extends "buddyapp/base.html" %}
-<!--> Template for login screen. Prompts user to enter username and password, and links to password reset
-with 'Forgot Password?'. Also links user to register if not a member. </!-->
-{% block title %}
-login
-{% endblock %}
-{% block body %}
-<form id="login_form" method="post" action="/buddyapp/">
-	{% csrf_token %}
-	Username: <input type="text" name="username" value="" size="50" />
-	<br />
-	Password: <input type="password" name="password" value="" size="50" />
-	<br/>
-	<input type="submit" value="submit"/>
-</form>
-<div class="mastfoot">
-	<div class="center-text">
-          <p>Not a member?<a class="nav-link" href="{% url 'register' %}">Register!</a></p>
+<!DOCTYPE html>
+{% load staticfiles %}
+
+
+<script src="{% static "js/ToP-jquery.js" %}"></script>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="{% static "images/bike.ico" %}">
+    <link href='https://fonts.googleapis.com/css?family=Nova Flat' rel='stylesheet'>
+    <!-- Bootstrap core CSS -->
+    <link href="http://v4-alpha.getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href={% static "css/cover.css" %} rel="stylesheet">
+    <title>Login</title>
+  </head>
+
+<body>
+	<h1>Bike Buddy</h1>
+	<div class="topnav" id="myTopnav">
+		<a>Login</a>
 	</div>
-</div>
-{% endblock %}
+	<br/>
+	<br/>
+	<br/>
+	<div class="form-text">
+		<form id="login_form" method="post" action="/buddyapp/">
+			{% csrf_token %}
+			Username: <input type="text" name="username" value="" size="50" />
+			<br />
+			Password: <input type="password" name="password" value="" size="50" />
+			<br/>
+			<input type="submit" value="submit"/>
+		</form>
+	</div>
+	<div class="form-text">
+		<p>Not a member?<a class="nav-link" href="{% url 'register' %}">Register!</a></p>
+	</div>
+</body>
