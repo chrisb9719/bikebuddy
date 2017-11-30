@@ -32,6 +32,22 @@ def add_route(request):
         form = UploadRouteForm()
     return render(request, 'buddyapp/add_route.html', {'form': form})
 
+#@login_required
+#Adds a comment to the playlist page desired
+def add_comment(request, route_name_slug):
+    route = Route.objects.get(slug=route_name_slug)
+    if request.method == "POST":
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.author=request.user.username
+            comment.playlist = playlist
+            comment.save()
+            return show_playlist(request, playlist_name_slug)
+    else:
+        form = CommentForm()
+    return render(request, 'ToP/add_comment_to_playlist.html', {'form': form})
+
 def register(request):
     context = RequestContext(request)
     registered = False
