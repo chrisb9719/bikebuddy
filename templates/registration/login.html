@@ -5,7 +5,11 @@ with 'Forgot Password?'. Also links user to register if not a member. </!-->
 login
 {% endblock %}
 {% block body %}
+<<<<<<< HEAD
+<form id="login_form" method="post" action="/buddyapp/">
+=======
 <form id="login_form" method="post" action="/registration/login/">
+>>>>>>> 62585d1987449b934ebe74fcf3ffb1309b126365
 	{% csrf_token %}
 	Username: <input type="text" name="username" value="" size="50" />
 	<br />
