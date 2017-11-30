@@ -41,12 +41,29 @@ def add_comment(request, route_name_slug):
         if form.is_valid():
             comment = form.save(commit=False)
             comment.author=request.user.username
-            comment.playlist = playlist
+            comment.route = route
             comment.save()
-            return show_playlist(request, playlist_name_slug)
+            return show_playlist(request, route_name_slug)
     else:
         form = CommentForm()
-    return render(request, 'ToP/add_comment_to_playlist.html', {'form': form})
+    return render(request, 'ToP/add_comment.html', {'form': form})
+
+
+#@login_required
+#Adds a rating to the playlist page desired
+def add_rating(request, route_name_slug):
+    route = Route.objects.get(slug=route_name_slug)
+    if request.method == "POST":
+        form = RatingForm(request.POST)
+        if form.is_valid():
+            rating = form.save(commit=False)
+            rating.author=request.user.username
+            rating.route = route
+            rating.save()
+            return show_route(request, route_name_slug)
+    else:
+        form = RatingForm()
+    return render(request, 'buddyapp/add_rating.html', {'form': form})
 
 def register(request):
     context = RequestContext(request)
@@ -67,7 +84,7 @@ def register(request):
     else:
         user_form = UserForm()
         profile_form = UserProfileForm()
-    return render_to_response('registration/register.html',
+    return render_to_response('buddyapp/register.html',
                              {'user_form': user_form, 'profile_form': profile_form, 'registered': registered},
                               context)
 
@@ -88,7 +105,7 @@ def user_login(request):
             print "Invalid login details: {0}. {1}".format(username, password)
             return HttpResponse("Invalid login details supplied")
     else:
-        return render_to_response('registration/login.html', {}, context)
+        return render_to_response('buddyapp/login.html', {}, context)
 
 
 @login_required

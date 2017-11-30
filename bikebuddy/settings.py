@@ -8,7 +8,7 @@ TEMPLATE_PATH = os.path.join(PROJECT_PATH, 'templates')
 DATABASE_PATH = os.path.join(PROJECT_PATH, 'bikebuddy.db')
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
-LOGIN_URL = '/buddyapp/login/'
+LOGIN_URL = '/registration/login/'
 
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
@@ -122,6 +122,7 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'buddyapp',
     # Uncomment the next line to enable the admin:
     # 'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:

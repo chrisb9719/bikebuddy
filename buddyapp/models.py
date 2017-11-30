@@ -22,8 +22,35 @@ class UserProfile(models.Model):
         if created:
             UserProfile.objects.create(user=instance)
 
+"""class Comment(models.Model):
+    route = models.ForeignKey('buddyapp.Route', related_name='comments',null=True)
+    author = models.CharField(max_length=128, unique=False)
+    text = models.TextField()
+    created_date = models.DateTimeField(default=timezone.now)
+    approved_comment = models.BooleanField(default=False)
 
+    def approve(self):
+        self.approved_comment = True
+        self.save()
 
+    def __str__(self):
+        return self.text
+
+class Rating(models.Model):
+	RATING_CHOICES = (1,2,3,4,5
+	route = models.ForeignKey('buddyapp.Route', related_name='ratings',null=True)
+	author = models.CharField(max_length=128, unique=False)
+	rating = models.IntegerField(choices=RATING_CHOICES, default=1)
+	created_date = models.DateTimeField(default=timezone.now)
+	approved_rating = models.BooleanField(default=False)
+
+	def approve(self):
+		self.approved_rating = True
+		self.save()
+	
+	def __str__(self):
+		return str(self.rating)
+"""
 # Configure a model for a playlist object
 class Route(models.Model):
 
@@ -34,8 +61,6 @@ class Route(models.Model):
     rating = models.IntegerField(default=0)
     hillines = models.IntegerField(default=0)
 
-
-    picture = models.ImageField(upload_to='route_images',blank=True)
     author = models.CharField(max_length=128, unique=False, blank=False)
 	# Slug automatically generated
     slug = models.SlugField(unique=True)
