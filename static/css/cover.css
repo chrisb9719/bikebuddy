@@ -66,16 +66,19 @@ body {
 	margin-left: 250px;
 	text-align: left;
 	font-size: 20px;
+	color: white;
 }
 
 .form-text {
 	text-align: center;
-	font-size: 20px
+	font-size: 20px;
+	color: white;
 }
 
 .form-submit{
 	text-align: center;
 	font-size: 20px;
+	color: white;
 }
 /*
  * Header

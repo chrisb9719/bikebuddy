@@ -2,7 +2,9 @@
 from django.http import HttpResponse
 from django.template import RequestContext
 from django.shortcuts import render_to_response, render
-from buddyapp.forms import UploadRouteForm, UserForm, ProfileForm
+from django.contrib.auth import authenticate, login
+from django.http import HttpResponseRedirect, HttpResponse
+from buddyapp.forms import UploadRouteForm, UserForm, UserProfileForm
 import gpxpy
 import gpxpy.gpx
 
@@ -39,15 +41,34 @@ def register(request):
             user = user_form.save()
             user.set_password(user.password)
             user.save()
-            profile = profile_form.save()
+            profile = profile_form.save(commit=False)
             profile.user = user
             profile.save()
-            registered=True
+            registered = True
         else:
             print user_form.errors, profile_form.errors
     else:
         user_form = UserForm()
-        profile_form = ProfileForm()
-    return render_to_response('registration/registration_form.html',
+        profile_form = UserProfileForm()
+    return render_to_response('registration/register.html',
                              {'user_form': user_form, 'profile_form': profile_form, 'registered': registered},
                               context)
+
+
+def user_login(request):
+    context = RequestContext(request)
+    if request.method == True:
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(username = username, password = password)
+        if user is not None:
+            if user.is_active():
+                login(request, user)
+                return HttpResponseRedirect('/buddyapp/')
+            else:
+                return HttpResponse("Your BikeBuddy account is disabled")
+        else:
+            print "Invalid login details: {0}. {1}".format(username, password)
+            return HttpResponseRedirect("Invalid login details supplied")
+    else:
+        return render_to_response('registration/login.html', {}, context)
