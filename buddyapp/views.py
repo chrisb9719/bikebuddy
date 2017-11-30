@@ -9,7 +9,6 @@ from buddyapp.forms import UploadRouteForm, UserForm, UserProfileForm
 import gpxpy
 import gpxpy.gpx
 
-@login_required
 def index(request):
     context = RequestContext(request)
     return render_to_response('buddyapp/home.html', context)
