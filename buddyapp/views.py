@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.template import RequestContext
 from django.shortcuts import render_to_response, render
 from django.contrib.auth import authenticate, login
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect, HttpResponse
 from buddyapp.forms import UploadRouteForm, UserForm, UserProfileForm
 import gpxpy
@@ -64,7 +65,7 @@ def user_login(request):
         if user is not None:
             if user.is_active:
                 login(request, user)
-                return HttpResponseRedirect('/buddyapp/')
+                return HttpResponseRedirect('/buddyapp/home.html')
             else:
                 return HttpResponse("Your BikeBuddy account is disabled")
         else:
@@ -72,3 +73,8 @@ def user_login(request):
             return HttpResponse("Invalid login details supplied")
     else:
         return render_to_response('registration/login.html', {}, context)
+
+
+@login_required
+def restricted(request):
+    return HttpResponse("Since you're logged in, you can see this text!")

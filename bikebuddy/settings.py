@@ -8,6 +8,7 @@ TEMPLATE_PATH = os.path.join(PROJECT_PATH, 'templates')
 DATABASE_PATH = os.path.join(PROJECT_PATH, 'bikebuddy.db')
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
+LOGIN_URL = '/buddyapp/login/'
 
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
