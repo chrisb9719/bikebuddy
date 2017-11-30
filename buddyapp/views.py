@@ -57,18 +57,18 @@ def register(request):
 
 def user_login(request):
     context = RequestContext(request)
-    if request.method == True:
+    if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
-        user = authenticate(username = username, password = password)
+        user = authenticate(username=username, password=password)
         if user is not None:
-            if user.is_active():
+            if user.is_active:
                 login(request, user)
                 return HttpResponseRedirect('/buddyapp/')
             else:
                 return HttpResponse("Your BikeBuddy account is disabled")
         else:
             print "Invalid login details: {0}. {1}".format(username, password)
-            return HttpResponseRedirect("Invalid login details supplied")
+            return HttpResponse("Invalid login details supplied")
     else:
         return render_to_response('registration/login.html', {}, context)
