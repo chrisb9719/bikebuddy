@@ -5,7 +5,7 @@ with 'Forgot Password?'. Also links user to register if not a member. </!-->
 login
 {% endblock %}
 {% block body %}
-<form id="login_form" method="post" action="/rango/login/">
+<form id="login_form" method="post" action="/registration/login/">
 	{% csrf_token %}
 	Username: <input type="text" name="username" value="" size="50" />
 	<br />
