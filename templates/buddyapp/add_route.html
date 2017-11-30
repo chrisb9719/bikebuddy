@@ -8,7 +8,7 @@
 
 {% block body %}
 <div class="form-text">
-		<form action="" method="POST" class="post-form">
+		<form action="/buddyapp/" method="POST" class="post-form">
 				{% csrf_token %}
 				{{ form.as_p }}
 				<p class = "form-submit">
