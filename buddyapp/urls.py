@@ -10,10 +10,9 @@ urlpatterns = patterns('',
     url(r'^add_route/$', views.add_route, name='add_route'),
 
     url(r'^restricted/$', views.restricted, name='restricted'),
-    url(r'^regisiter/$', views.register, name='register'),
+    url(r'^register/$', views.register, name='register'),
     url(r'^login/$', views.user_login, name='login'),
-
-    url(r'^restriced/$', views.restricted, name='restricted'),
+    url(r'^logout/$', views.user_logout, name='logout'),
 
 
 )

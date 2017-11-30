@@ -2,8 +2,8 @@ from django.conf.urls import patterns, include, url
 from buddyapp import views
 from django.contrib import admin
 # Uncomment the next two lines to enable the admin:
-# from django.contrib import admin
-# admin.autodiscover()
+from django.contrib import admin
+admin.autodiscover()
 
 urlpatterns = patterns('',
     # Examples:
@@ -16,10 +16,8 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     url(r'^buddyapp/', include('buddyapp.urls')),
 	url(r'^$', views.user_login, name = 'login'),
-    url(r'^home/$', views.index, name='index'),
-    url(r'^my_routes/$', views.my_routes, name='my_routes'),
-    url(r'^add_route/$', views.add_route, name='add_route'),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^registration/login/$', views.user_login, name='login'),
     #url(r'^route/(?P<route_name_slug>[\w\-]+)/$', views.show_route, name='show_route'),
     #url(r'^my_routes/$', views.my_routes, name='my_routes'),
     #url(r'^home/accounts/password_change/$', auth_views.password_change, name='password_change'),

@@ -2,21 +2,24 @@
 from django.http import HttpResponse
 from django.template import RequestContext
 from django.shortcuts import render_to_response, render
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect, HttpResponse
 from buddyapp.forms import UploadRouteForm, UserForm, UserProfileForm
 import gpxpy
 import gpxpy.gpx
 
+@login_required
 def index(request):
     context = RequestContext(request)
     return render_to_response('buddyapp/home.html', context)
 
+@login_required
 def my_routes(request):
     context = RequestContext(request)
     return render_to_response('buddyapp/my_routes.html')
 
+@login_required
 def add_route(request):
     if request.method == 'POST':
         form = UploadRouteForm(request.POST, request.FILES)
@@ -32,7 +35,7 @@ def add_route(request):
         form = UploadRouteForm()
     return render(request, 'buddyapp/add_route.html', {'form': form})
 
-#@login_required
+@login_required
 #Adds a comment to the playlist page desired
 def add_comment(request, route_name_slug):
     route = Route.objects.get(slug=route_name_slug)
@@ -49,7 +52,7 @@ def add_comment(request, route_name_slug):
     return render(request, 'ToP/add_comment.html', {'form': form})
 
 
-#@login_required
+@login_required
 #Adds a rating to the playlist page desired
 def add_rating(request, route_name_slug):
     route = Route.objects.get(slug=route_name_slug)
@@ -105,9 +108,14 @@ def user_login(request):
             print "Invalid login details: {0}. {1}".format(username, password)
             return HttpResponse("Invalid login details supplied")
     else:
-        return render_to_response('buddyapp/login.html', {}, context)
+        return render_to_response('buddyapp/home.html', {}, context)
 
 
 @login_required
 def restricted(request):
     return HttpResponse("Since you're logged in, you can see this text!")
+
+@login_required
+def user_logout(request):
+    logout(request)
+    return HttpResponseRedirect('/registration/login/')
