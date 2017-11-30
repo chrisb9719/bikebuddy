@@ -51,7 +51,7 @@ def register(request):
     else:
         user_form = UserForm()
         profile_form = UserProfileForm()
-    return render_to_response('registration/register.html',
+    return render_to_response('buddyapp/register.html',
                              {'user_form': user_form, 'profile_form': profile_form, 'registered': registered},
                               context)
 
@@ -72,7 +72,7 @@ def user_login(request):
             print "Invalid login details: {0}. {1}".format(username, password)
             return HttpResponse("Invalid login details supplied")
     else:
-        return render_to_response('registration/login.html', {}, context)
+        return render_to_response('buddyapp/login.html', {}, context)
 
 
 @login_required

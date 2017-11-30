@@ -5,6 +5,9 @@ Password re-entry is prompted for verification. </!-->
 	Register
 {% endblock %}
 {% block body %}
+{% if registered %}
+	<p class="center-text"><strong>Thank you for registering!<strong></p>
+{% else %}
 	<form role="form" method="post" action=".">
 		{% csrf_token %}
 		<div class="center-text">
@@ -30,6 +33,7 @@ Password re-entry is prompted for verification. </!-->
 		</p>
 		</div>
 		<br/>
-		<button type="submit" class="btn btn-default">Submit</button>
+		<input type="submit" name="submit" value="Register"/>
 	</form>
+	{% endif %}
 {% endblock %}

@@ -34,8 +34,6 @@ class Route(models.Model):
     rating = models.IntegerField(default=0)
     hillines = models.IntegerField(default=0)
 
-
-    picture = models.ImageField(upload_to='route_images',blank=True)
     author = models.CharField(max_length=128, unique=False, blank=False)
 	# Slug automatically generated
     slug = models.SlugField(unique=True)
